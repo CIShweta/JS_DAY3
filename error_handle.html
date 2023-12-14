@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Error Handling</title>
+</head>
+<body>
+	<p>How to use try and catch in JS</p>
+	<p id="sample1"></p>
+	<p>Please enter number between 5 to 10</p>
+	<br>
+	<input type="text" id="demo">
+	<br>
+	<button onclick="checkNum()">Check the number</button>
+	<p id="sample2"></p>
+	<br>
+	<p id="sample3"></p>
+	<script type="text/javascript">
+		function checkNum(){
+			const num1=document.getElementById("demo").value;
+			const str1=document.getElementById("sample2");
+			str1.innerHTML="";
+			try{
+				if(num1=="") throw "empty";
+				if(isNaN(num1)) throw "not a number";
+				if(num1<5) throw "too low";
+				if(num1>10) throw "too high";
+			}
+			catch(err){
+				// str1.innerHTML="input is "+err;
+				str1.innerHTML="input is "+err.name;
+			}
+			finally{
+				document.getElementById("sample3").innerHTML="HELLO Everryone";
+			}
+		}
+		try{
+			addalert("Welcome");
+		}
+		catch(err){
+			document.getElementById("sample1").innerHTML=err.message;
+		}
+	</script>
+</body>
+</html>
